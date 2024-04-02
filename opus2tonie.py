@@ -5,6 +5,7 @@ import datetime
 import glob
 import hashlib
 import os
+from urllib.parse import unquote_plus
 import math
 import struct
 import subprocess
@@ -955,6 +956,8 @@ def get_input_files(input_filename):
                     continue
                 if fname.startswith("file:///"):
                     fname = fname.replace("file:///","")
+                    if fname.find('%') > 1:
+                        fname = unquote_plus(fname)
                     if os.path.isabs(fname):
                         input_files.append(fname)
                     else:
