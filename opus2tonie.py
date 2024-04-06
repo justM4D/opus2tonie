@@ -643,7 +643,7 @@ def create_tonie_file(output_file, input_files, no_tonie_header=False, user_time
             else:
                 timestamp = int(user_timestamp)
         else:
-            timestamp = int(time.time())
+            timestamp = int(time.time()) - 0x50000000;
 
         sha1 = hashlib.sha1()
 
